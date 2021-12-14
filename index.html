@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <div class="container">
+        <div class="header">
+            <h1>Create Account</h1>
+        </div>
+        <form action="" class="form" id="form" @submit.prevent ="checkForm" novalidate="true">
+            <div class="form-control">
+                <label for="name">Username</label>
+                <input type="text" 
+                    placeholder="John Smith" required 
+                    id="name" 
+                    v-model="name" 
+                    v-bind:style="[errorsName.length ? {borderColor: '#e74c3c'} : {borderColor: '#2ecc71'}]">
+                <small v-if="errorsName.length">{{ errorsName }}</small>
+            </div>
+            <div class="form-control">
+                <label for="">Email</label>
+                <input type="email" 
+                    placeholder="my@email.com" required 
+                    id="email" 
+                    v-model="email" 
+                    v-bind:style="[errorsEmail.length ? {borderColor: '#e74c3c'} : {borderColor: '#2ecc71'}]">
+                <small v-if="errorsEmail.length">{{ errorsEmail }}</small>
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" 
+                    placeholder="Password" required 
+                    id="password" 
+                    v-model="password"
+                    v-bind:style="[errorsPassword.length ? {borderColor: '#e74c3c'} : {borderColor: '#2ecc71'}]">
+                <small v-if="errorsPassword.length">{{ errorsPassword }}</small>
+            </div>
+            <div class="form-control">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" 
+                    placeholder="Password re-entry" required
+                    id="password2" 
+                    v-model="password2"
+                    v-bind:style="[errorsPassword2.length ? {borderColor: '#e74c3c'} : {borderColor: '#2ecc71'}]">
+                <small v-if="errorsPassword2.length">{{ errorsPassword2 }}</small>
+            </div>
+            <button type="submit" value="Submit">Submit</button>
+        </form>     
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
